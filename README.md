@@ -18,3 +18,6 @@
 * As stated, I have not tested this implementation in any way whatsoever on anything other than Linux, I will get to this when I can.
 * There is no current method in place to modify the output file to display the student's original answer. I will work on adding this feature as I am able to.
 * I understand that the inconsistent requirement of when to add file extension is confusing, I am working on changing this as well. 
+
+### Feedback
+* Please direct any and all feedback on the functionality to Enzi at my work email, or in person, so I can work on implementing it. I am aware that the current output of the missed answers is not in the most readable format, and I am open to any suggestions on how to optimize it for readability. I'll work on implementing a GUI at some point if this tool ends up being used very much.
