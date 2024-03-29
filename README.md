@@ -54,4 +54,6 @@
     * Lmk next time you see me at work
 
 ### Known Issues
-* Final page of template PDF is being included regardless of whether or not it contains a question answered incorrectly
+* Final page of template PDF is being included regardless of whether it contains a question answered incorrectly
+* Page detailing missed questions does not include all missed answers in cases with more than 38 missed questions
+* Equations are not rendered in final missed questions page
