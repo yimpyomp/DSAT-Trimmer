@@ -52,3 +52,15 @@ def generate_filter(filepath):
     filtered_responses = filter_responses(raw_report)
     return filtered_responses
 
+
+def save_filter(filtered_responses, output_name):
+    if '.txt' not in output_name:
+        output_name += '.txt'
+    filtered_filter = []
+    for element in filtered_responses:
+        next_element = element["Absolute question"] + ': ' + element["Student Answer"] + '\n'
+        filtered_filter.append(next_element)
+    with open(output_name, 'w') as f:
+        f.writelines(filtered_filter)
+    f.close()
+    return None

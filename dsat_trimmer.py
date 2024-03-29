@@ -2,6 +2,7 @@
 import argparse
 from json_parser import *
 from test_trimmer import *
+import pathlib
 
 
 if __name__ == '__main__':
@@ -17,13 +18,13 @@ if __name__ == '__main__':
     filtered_responses = generate_filter(args.responses)
     # Save text file containing filter data
     filter_only_title = args.output + '_filter_only.txt'
-    with open(filter_only_title, 'w') as f:
-        for entry in filtered_responses:
-            f.writelines(str(entry) + '\n')
-        f.close()
+    save_filter(filtered_responses, filter_only_title)
+    # Create pdf
+    make_error_page(filter_only_title)
     # Load template file
     user_template = load_test(args.template)
     # Create list of pages to filter from final
     target_pages = find_target_pages(user_template, filtered_responses)
-    # Generate final PDF
-    trim_test(target_pages, user_template, args.output)
+    # Generate final PDF, add error page
+    trim_test(target_pages, user_template, filter_only_title.replace('.txt', '.pdf'), args.output)
+
