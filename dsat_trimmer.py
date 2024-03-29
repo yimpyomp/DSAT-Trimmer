@@ -15,6 +15,12 @@ if __name__ == '__main__':
     # Do the thing
     # Generate list of incorrect responses
     filtered_responses = generate_filter(args.responses)
+    # Save text file containing filter data
+    filter_only_title = args.output + '_filter_only.txt'
+    with open(filter_only_title, 'w') as f:
+        for entry in filtered_responses:
+            f.writelines(str(entry) + '\n')
+        f.close()
     # Load template file
     user_template = load_test(args.template)
     # Create list of pages to filter from final
