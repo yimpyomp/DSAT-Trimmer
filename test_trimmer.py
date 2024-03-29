@@ -58,13 +58,18 @@ def make_error_page(error_file_path):
         lines = f.readlines()
 
     # Set font and size
-    c.setFont("Helvetica", 12)
+    c.setFont("Helvetica", 10)
 
     # Write each line to the PDF
     y = 750  # Starting y position (you can adjust this)
+    x_position = 50
     for line in lines:
-        c.drawString(100, y, line.strip())
+        c.drawString(x_position, y, line.strip())
         y -= 20  # Move to the next line
+        # Moving over, resetting y position if bottom of page is reached
+        if y == 10:
+            x_position += 100
+            y = 750
 
     # Save the PDF
     c.save()
