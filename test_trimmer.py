@@ -1,5 +1,4 @@
 from pypdf import PdfReader, PdfWriter
-from json_parser import *
 
 
 def load_test(test_path):

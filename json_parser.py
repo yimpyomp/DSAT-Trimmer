@@ -38,6 +38,7 @@ def filter_responses(responses: list) -> list:
     return incorrect_responses
 
 
+# Debug only
 def test_me():
     sample_report = load_report('sample_data/responses.json')
     sample_responses = filter_responses(sample_report)
@@ -46,5 +47,8 @@ def test_me():
     return sample_responses
 
 
-if __name__ == '__main__':
-    my_test = test_me()
+def generate_filter(filepath):
+    raw_report = load_report(filepath)
+    filtered_responses = filter_responses(raw_report)
+    return filtered_responses
+
