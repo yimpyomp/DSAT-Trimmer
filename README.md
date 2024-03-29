@@ -33,3 +33,12 @@
 
 ### Feedback
 * Please direct any and all feedback on the functionality to Enzi at my work email, or in person, so I can work on implementing it. I am aware that the current output of the missed answers is not in the most readable format, and I am open to any suggestions on how to optimize it for readability. I'll work on implementing a GUI at some point if this tool ends up being used very much.
+
+### Bug Reporting
+* When a bug is inevitably, and probably frequently found, please report it using any of the following methods:
+    * Email Enzi's work email address
+    * Open an issue on this repository
+    * Lmk next time you see me at work
+
+### Known Issues
+* Final page of template PDF is being included regardless of whether or not it contains a question answered incorrectly
