@@ -1,4 +1,4 @@
-# This is a work in progress, currently I have not tested functionality on anything other than Linux.
+# This is a work in progress, compatability has been tested on Linux as well as a personal, unmanaged machine running Windows 10.
 
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
 
@@ -28,7 +28,6 @@
     *  This will produce two files, the first is a PDF containing only the pages containing incorrect answers. The second is a text file containing the student's original answers.
 
 ### Notes and Planned Updates
-* As stated, I have not tested this implementation in any way whatsoever on anything other than Linux, I will get to this when I can.
 * There is no current method in place to modify the output file to display the student's original answer. I will work on adding this feature as I am able to.
 * I understand that the inconsistent requirement of when to add file extension is confusing, I am working on changing this as well. 
 
