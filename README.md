@@ -4,7 +4,7 @@
 
 ### Basic usage:
 1. Ensure *Python 3.10 or greater* is installed on your machine.
-2. Clone the repository to your local machine using your preferred method
+2. Clone the repository to your machine using your preferred method
 3. Install dependencies
     * A requirements.txt file *is* included. To install requirements, run the following in your terminal:
         * pip -r install requirements.txt
