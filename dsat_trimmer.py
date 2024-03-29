@@ -2,7 +2,6 @@
 import argparse
 from json_parser import *
 from test_trimmer import *
-import pathlib
 
 
 if __name__ == '__main__':
