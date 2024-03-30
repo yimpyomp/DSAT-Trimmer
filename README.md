@@ -1,7 +1,7 @@
 # This is a work in progress, compatibility has been tested on Linux as well as a personal, unmanaged machine running Windows 10.
 
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
-## Current Version: eMFdTrimmerv1.0.0
+## Current Version: eMFdTrimmer v1.0.0
 * If program _does not_ display a build version upon execution, please download the latest build. Essential bugfixes have been implemented as of v1.0.0
 ## Known Issues
 * Extra pages of template PDF is being included regardless of whether it contains a question answered incorrectly
