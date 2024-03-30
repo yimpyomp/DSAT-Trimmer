@@ -4,6 +4,7 @@
 ## Known Issues
 * Extra pages of template PDF is being included regardless of whether it contains a question answered incorrectly
 * Equations are not rendered in final missed questions page
+* Pages may be incomplete if the _entire question or answer choices_ runs over to the next page
 ### Obtaining Necessary Brightspace DSAT Files
 * The program requires two components to operate, the responses.json file _and_ a blank DSAT template
 * To download the responses file:
@@ -40,7 +41,8 @@
     3. -o/--output: Name to save trimmed test to. *Do not include the .pdf file extension here. The program handles that*
     * _Example Windows Usage:_
         *  .\DSAT-Trimmer-main\dsat_trimmer.py -r responses.json -t _name of your blank DSAT_ -o _name of output pdf_
-    *  This will produce two files, the first is a PDF containing only the pages containing incorrect answers. The second is a text file containing the student's original answers.
+    *  The resulting PDF file will consist of two pieces, the first page will list student errors and their original answers. The remainder of the document will contain pages corresponding only to the missed problems.
+        * Some of the missed questions will have a statement saying that the question is worth zero points. Some questions are not worth any points, and at this time there is no way to retrieve the correct answer without also downloading the answer key corresponding to the test.
 
 ### Notes and Planned Updates
 * There is no current method in place to modify the output file to display the student's original answer. I will work on adding this feature as I am able to.
