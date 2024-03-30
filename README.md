@@ -3,7 +3,7 @@
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
 ## Known Issues
 * Extra pages of template PDF is being included regardless of whether it contains a question answered incorrectly
-* Equations are not rendered in final missed questions page 
+* Equations are not rendered in final missed questions page
 ### Obtaining Necessary Brightspace DSAT Files
 * The program requires two components to operate, the responses.json file _and_ a blank DSAT template
 * To download the responses file:
@@ -26,7 +26,7 @@
     * I recommend creating a directory to house both the current report you are using, full DSAT, _and_ the DSAT-Trimmer-main folder.
 3. Install dependencies
     * _Windows Users skip to next_ A requirements.txt file *is* included. To install requirements, run the following in your terminal:
-        * pip -r install requirements.txt
+        * pip install -r requirements.txt
     * For Windows:
         * Open PowerShell. You can find it by using: Windows Key > PowerShell
         * Navigate to directory containing the scripts. This is done using the command 'cd'. Tab can be used to autocomplete directories, directories are separated by '\'.
