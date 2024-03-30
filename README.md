@@ -1,4 +1,4 @@
-# This is a work in progress, compatability has been tested on Linux as well as a personal, unmanaged machine running Windows 10.
+# This is a work in progress, compatibility has been tested on Linux as well as a personal, unmanaged machine running Windows 10.
 
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
 ## Known Issues
@@ -9,9 +9,9 @@
 * The program requires two components to operate, the responses.json file _and_ a blank DSAT template
 * To download the responses file:
     * Navigate to the student you are attempting to generate the trimmed test for
-    * Using the Content Browser, choose any option. This will lead you to a new page containing all of the assignments supported on Brightspace
+    * Using the Content Browser, choose any option. This will lead you to a new page containing all assignments supported by Brightspace
     * Select the appropriate test from the column on the left side of the screen
-        * The box for the selected item will open, showing a second option for the same test just below the original box, there will be an gray icon that looks like a puzzle piece to the left of the title. Click this box
+        * The box for the selected item will open, showing a second option for the same test just below the original box, there will be a gray icon that looks like a puzzle piece to the left of the title. Click this box
     * Near the top of the area where the test information is displayed, there will be four icons, a pencil, bar graph, eye, and three vertical dots.
         * If you are unsure of what the student's most recent test is, you can check by clicking the bar graph icon, choosing the Outcomes tab, and checking the summary. The most recent test will be displayed directly under the student's name.
     * Click the icon with the three vertical dots. On the resulting menu, select the option "Download Responses"
