@@ -4,6 +4,10 @@ from reportlab.pdfgen import canvas
 import pathlib
 
 
+module_titles = ["Section 1, Module 1: Reading and Writing", "Section 1, Module 2: Reading and Writing",
+                 "Section 2, Module 1: Math", "Section 2, Module 2: Math"]
+
+
 def load_test(test_path):
     test_reader = PdfReader(test_path)
     return test_reader
@@ -12,19 +16,17 @@ def load_test(test_path):
 def find_target_pages(test_reader, target_responses):
     # Create
     target_pages = []
-    last_page = 0
     upper_bound = test_reader._get_num_pages()
     for entry in target_responses:
         target = entry['Absolute question']
         print(f'Searching for {target}')
-        for page in range(last_page, upper_bound):
+        for page in range(upper_bound):
             # Check if question is contained on the page
             current_text = test_reader.pages[page].extract_text()
             if target in current_text:
                 target_pages.append(page)
-                last_page = page
-            else:
-                continue
+                break
+
     return target_pages
 
 
@@ -77,7 +79,5 @@ def make_error_page(error_file_path):
     # Delete text file
     pathlib.Path(error_file_path).unlink()
     return None
-
-
 
 

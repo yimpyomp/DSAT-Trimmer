@@ -1,5 +1,6 @@
 import json
 mcq_reference = ['A', 'B', 'C', 'D', 'E']
+module_headers = ["RW_Module1_Q", "RW_Module2_Q", "Math_Module1", "Math_Module2"]
 
 '''
 Target data is stored here:
@@ -23,18 +24,20 @@ def convert_mcq(mcq_index):
 def filter_responses(responses: list) -> list:
     incorrect_responses = []
     for entry in responses:
-        absolute_question_number = responses.index(entry) + 1
         next_entry = {}
         # Finding questions that were answered incorrectly
         try:
-            if entry["score"] < entry["max_score"]:
+            if (entry["score"] < entry["max_score"]) or (entry["score"] == entry["max_score"] == 0):
                 next_entry["Question"] = entry["item_reference"]
-                next_entry["Absolute question"] = "Question " + str(absolute_question_number)
+                next_entry["Absolute question"] = get_absolute_question(entry["item_reference"])
                 # Convert response to proper letter if mcq, add whole answer otherwise
                 if entry["question_type"] == "mcq":
                     next_entry["Student Answer"] = convert_mcq(entry["response"]["value"][0])
                 else:
                     next_entry["Student Answer"] = entry["response"]["value"][0]
+                # Add note for questions worth 0 points
+                if entry["max_score"] == 0:
+                    next_entry["Student Answer"] = next_entry["Student Answer"] + " Worth 0 Points"
                 incorrect_responses.append(next_entry)
         except TypeError:
             pass
@@ -67,3 +70,32 @@ def save_filter(filtered_responses, output_name):
         f.writelines(filtered_filter)
     f.close()
     return None
+
+
+def get_absolute_question(question_reference):
+    # Initialize adjustment value, no adjustment needed for RW Module 1
+    adjustment_value = 0
+    # Check which module question belongs to, adjust accordingly
+    if "RW_Module2" in question_reference:
+        adjustment_value = 27
+    elif "Math_Module1" in question_reference:
+        adjustment_value = 81
+    elif "Math_Module2" in question_reference:
+        adjustment_value = 103
+    unadjusted_index = isolate_question(question_reference)
+    adjusted_index = adjustment_value + int(unadjusted_index)
+    return "Question " + str(adjusted_index)
+
+
+def isolate_question(reference_string):
+    # Run through reference backwards until a non digit character is found
+    container = []
+    for character in reference_string[::-1]:
+        if character.isdigit():
+            container.append(character)
+        else:
+            break
+    # Flip, join, return
+    return ''.join(list(reversed(container)))
+
+
