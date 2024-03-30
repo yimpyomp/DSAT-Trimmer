@@ -25,9 +25,18 @@ def find_target_pages(test_reader, target_responses):
             current_text = test_reader.pages[page].extract_text()
             if target in current_text:
                 target_pages.append(page)
+                # Check if next question appears on the page, if not, add one more page to ensure entire question
+                # is included
+                next_question = increment_target(target)
+                try:
+                    if next_question not in current_text:
+                        target_pages.append(page + 1)
+                        break
+                except IndexError:
+                    pass
                 break
 
-    return target_pages
+    return filter_duplicate_pages(target_pages)
 
 
 def trim_test(target_pages, test_reader, error_path, save_name):
@@ -81,3 +90,22 @@ def make_error_page(error_file_path):
     return None
 
 
+def increment_target(target_question):
+    # Get numbers from question
+    question_number = []
+    for character in target_question[::-1]:
+        if character.isdigit():
+            question_number.append(character)
+        else:
+            break
+    # Flip number, increment, return
+    next_question_number = int(''.join(question_number[::-1])) + 1
+    return 'Question ' + str(next_question_number)
+
+
+def filter_duplicate_pages(page_list):
+    final_list = [page_list[0]]
+    for i in range(1, len(page_list)):
+        if page_list[i] not in final_list:
+            final_list.append(page_list[i])
+    return final_list
