@@ -2,7 +2,6 @@
 
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
 ## Known Issues
-* Incorrect pages are being added to the trimmed report due to the mismatched formatting between the responses.json file and the structure of the test. I am working to resolve this issue.
 * Extra pages of template PDF is being included regardless of whether it contains a question answered incorrectly
 * Equations are not rendered in final missed questions page 
 ### Obtaining Necessary Brightspace DSAT Files
