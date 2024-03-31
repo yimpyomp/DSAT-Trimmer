@@ -4,6 +4,7 @@
 ## Current Version: eMFdTrimmer v1.0.0
 * If program _does not_ display a build version upon execution, please download the latest build. Essential bugfixes have been implemented as of v1.0.0
 ## Known Issues
+* Company owned/managed machines _do not permit_ the required Python version to be installed without Admin priveleges. 
 * Extra pages of template PDF is being included regardless of whether it contains a question answered incorrectly
 * Equations are not rendered in final missed questions page
 
