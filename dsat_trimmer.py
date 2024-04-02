@@ -2,7 +2,7 @@
 import argparse
 from json_parser import *
 from test_trimmer import *
-build_version = 'eMFdTrimmer v1.0.0\n\n'
+build_version = 'eMFdTrimmer v1.0.1\n\n'
 
 
 if __name__ == '__main__':
@@ -13,7 +13,7 @@ if __name__ == '__main__':
                        help='Name to save trimmed test file to. Do not include ".pdf"')
 
     args = parse.parse_args()
-    print(f'\n\nDSAT Trimmer Build {build_version}')
+    print(f'\n\n{build_version}')
 
     # Do the thing
     # Generate list of incorrect responses

@@ -2,6 +2,7 @@ from pypdf import PdfReader, PdfWriter
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import pathlib
+import re
 
 
 module_titles = ["Section 1, Module 1: Reading and Writing", "Section 1, Module 2: Reading and Writing",
@@ -30,8 +31,12 @@ def find_target_pages(test_reader, target_responses):
                 next_question = increment_target(target)
                 try:
                     if next_question not in current_text:
-                        target_pages.append(page + 1)
-                        break
+                        # If the first word on the next page appearing after the page number is NOT Question, there are
+                        # answer choices for the previous page there
+                        # Check next page
+                        if check_next_page(test_reader, page):
+                            target_pages.append(page + 1)
+                            break
                 except IndexError:
                     pass
                 break
@@ -109,3 +114,18 @@ def filter_duplicate_pages(page_list):
         if page_list[i] not in final_list:
             final_list.append(page_list[i])
     return final_list
+
+
+def check_next_page(test_reader, current_index):
+    next_page = test_reader.pages[current_index + 1].extract_text()
+    # Locate position of page number. Pypdf reads it at the top
+    sample_regex = re.compile('\d+/\d{3}')
+    search_result = re.search(sample_regex, next_page)
+    if search_result:
+        continue_index = search_result.end()
+        if 'Question' not in next_page[continue_index: continue_index + 11]:
+            return True
+        else:
+            return False
+    else:
+        return False
