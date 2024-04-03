@@ -4,7 +4,8 @@
 ## Current Version: eMFdTrimmer v1.0.1
 * If program _does not_ display a build version upon execution, please download the latest build. Essential bugfixes have been implemented as of v1.0.0
 ## Known Issues
-* Company owned/managed machines _do not permit_ the required Python version to be installed without Admin priveleges. 
+* Company owned/managed machines _do not permit_ the required Python version to be installed without Admin priveleges.
+    * One option if attempting installation of Python on a Company managed machine is to skip checking the box to add Python to PATH. I have not tested this and cannot speak to its viability. 
 * Equations are not rendered in final missed questions page
 
 ### Obtaining Necessary Brightspace DSAT Files
