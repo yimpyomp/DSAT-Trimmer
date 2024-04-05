@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 import argparse
+import sys
+
 from json_parser import *
 from test_trimmer import *
-build_version = 'eMFdTrimmer v1.0.1\n\n'
+build_version = 'eMFdTrimmer v1.0.2 Hotfix\n\n'
 
 
 if __name__ == '__main__':
@@ -14,6 +16,14 @@ if __name__ == '__main__':
 
     args = parse.parse_args()
     print(f'\n\n{build_version}')
+
+    # Check compatibility
+    compatibility_report = check_json_version(args.responses)
+    if compatibility_report:
+        print(compatibility_report)
+        continue_trim = input("Would you like to continue anyway? (Y/N)\n")
+        if continue_trim.lower() == 'n':
+            sys.exit()
 
     # Do the thing
     # Generate list of incorrect responses
