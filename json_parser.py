@@ -1,7 +1,7 @@
 import json
 mcq_reference = ['A', 'B', 'C', 'D', 'E']
 module_headers = ["RW_Module1_Q", "RW_Module2_Q", "Math_Module1", "Math_Module2"]
-
+supported_scoring_versions = ['v2.206.0']
 '''
 Target data is stored here:
 data['responses'][0][0]['responses'] as a list of dicts
@@ -88,14 +88,26 @@ def get_absolute_question(question_reference):
 
 
 def isolate_question(reference_string):
-    # Run through reference backwards until a non digit character is found
+    # Locate first q in question, numbers following is/are the question
     container = []
-    for character in reference_string[::-1]:
+    q_index = reference_string.index('Q')
+    cut_reference = reference_string[q_index + 1:]
+    for character in cut_reference:
         if character.isdigit():
             container.append(character)
         else:
             break
-    # Flip, join, return
-    return ''.join(list(reversed(container)))
+    return ''.join(container)
 
 
+def check_json_version(filepath: str):
+    with open(filepath) as response_json:
+        raw_report = json.load(response_json)
+        response_json.close()
+    # Isolating the useful part of the report
+    score_version = raw_report['responses'][0][0]['items'][2]['scoring']['meta']['scoring_version_used']
+    if score_version not in supported_scoring_versions:
+        return (f'Scoring version {score_version} detected. Compatibility with this version is in development.\n'
+                f'Reports generated may be inaccurate.')
+    else:
+        return None
