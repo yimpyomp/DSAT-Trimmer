@@ -1,9 +1,11 @@
 # This is a work in progress, compatibility has been tested on Linux as well as a personal, unmanaged machine running Windows 10.
 
 ## DSAT Trimmer: Trim a full DSAT DT/IT PDF to only the pages containing missed responses.
-## Current Version: eMFdTrimmer v1.0.1
+## Current Version: eMFdTrimmer v1.0.2
 * If program _does not_ display a build version upon execution, please download the latest build. Essential bugfixes have been implemented as of v1.0.0
 ## Known Issues
+* Recent reports are using a new method of storing responses. Trimmed tests may have incorrect questions included. This issue only appears to impact the Math sections. 
+    * _*Both RW modules appear to be unaffected*_
 * Company owned/managed machines _do not permit_ the required Python version to be installed without Admin priveleges.
     * One option if attempting installation of Python on a Company managed machine is to skip checking the box to add Python to PATH. I have not tested this and cannot speak to its viability. 
 * Equations are not rendered in final missed questions page
